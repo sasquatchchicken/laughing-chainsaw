@@ -3,7 +3,7 @@
 
 **Target: windows 11**
 
-**Version 1.0 Flipper_Ducky / OMG_Cable**
+**Version 1.0 Flipper_Ducky**
 
 ## Introduction
 Attackers continuously develop sophisticated methods to exploit vulnerabilities in systems. One of the more insidious techniques that has gained popularity among threat actors is the use of Ducky Script attacks, particularly when combined with USB Rubber Ducky devices. These attacks allow malicious actors to execute powerful payloads with little to no detection, making them a favorite tool in the arsenal of cybercriminals and even nation-state actors.
