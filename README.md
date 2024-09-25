@@ -5,6 +5,8 @@
 
 **Version 1.0 Flipper_Ducky**
 
+[Demonstration video](https://www.tiktok.com/@_toksa/video/7412129300427722026)
+
 ## Introduction
 Attackers continuously develop sophisticated methods to exploit vulnerabilities in systems. One of the more insidious techniques that has gained popularity among threat actors is the use of Ducky Script attacks, particularly when combined with USB Rubber Ducky devices. These attacks allow malicious actors to execute powerful payloads with little to no detection, making them a favorite tool in the arsenal of cybercriminals and even nation-state actors.
 ## The Ducky Script: A Silent, Lethal Weapon
